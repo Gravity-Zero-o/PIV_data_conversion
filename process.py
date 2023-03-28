@@ -1,8 +1,9 @@
 import os
-
+from tqdm import tqdm
+from tqdm.notebook import trange
 def process_file(file_path, output_folder):
     with open(file_path, 'r') as f:
-        lines = f.readlines()[-4290:]
+        lines = f.readlines()[-4290:]   #从倒数4290行开始读取
         arr = []
         for line in lines:
             arr.append(line.split())
@@ -18,9 +19,13 @@ def process_file(file_path, output_folder):
                 f2.write(" ".join(map(str,line)) + "\n")
 
 input_folder = 'K:/tmp/test1/0323/PIVdata'
-output_folder = 'K:/tmp/test1/0323/out'
-plot_folder='K:/tmp/test1/0323/plot'
-for filename in os.listdir(input_folder):
+output_folder = 'K:/tmp/test1/0323/out1'
+print("Look! File conversion in progress...")
+if not os.path.exists(output_folder):
+    os.makedirs(output_folder)
+filename = os.listdir(input_folder)
+total_files = len(filename)
+for i, filename in tqdm(enumerate(filename), total=total_files,colour='blue'):
     if filename.endswith('.dat'):
         file_path = os.path.join(input_folder, filename)
         process_file(file_path, output_folder)
