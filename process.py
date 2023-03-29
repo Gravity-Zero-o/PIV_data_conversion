@@ -2,11 +2,11 @@ import os
 from tqdm import tqdm
 
 ##################
-input_folder = 'K:/tmp/test1/0323/PIVdata/u30f10_Velocity'
-output_folder = 'K:/tmp/test1/0323/U30F10_testout'
+input_folder = 'K:/Velocity'
+output_folder = 'K:/out'
 read_line = 4290  #设置倒数的行数，这里是倒数第4290行，值为xy之积
 x_line = 55       #每个x对应的y数量
-y_line = 78       # x的总数
+y_line = 78       #x的总数
 ##################
 
 
