@@ -1,6 +1,13 @@
 import os
 from tqdm import tqdm
 
+####################
+x=71.20           # 待测x坐标
+y=71.20           # 待测y坐标
+output_folder = 'K:/tmp/test1/0323/U30F10_out'     #这个路径是前面文件转换后的输出路径，也是提取数据的输入路径
+plot_folder = 'K:/tmp/test1/0323/U30F10_plot'      #这是提取数据的输出路径
+#####################
+
 data = []
 def extract_data(file_path, output_folder):
     with open(file_path, 'r') as f:
@@ -10,7 +17,7 @@ def extract_data(file_path, output_folder):
             arr.append(line.split())
         global data
         for i in range(len(arr)):
-            if float(arr[i][0]) == 62.17 and float(arr[i][1]) == 38.40:   # location 73.15 51.20 62.17 38.40
+            if float(arr[i][0]) == x and float(arr[i][1]) == y:   # location
                 data.append([float(arr[i][2]), float(arr[i][3])])
 
 
@@ -23,9 +30,6 @@ def extract_data(file_path, output_folder):
         '''
 
 print("Extracting the velocity...")
-input_folder = 'K:/tmp/test1/0323/PIVdata'
-output_folder = 'K:/tmp/test1/0323/out'
-plot_folder='K:/tmp/test1/0323/plot1'
 files = os.listdir(output_folder)
 files = sorted(files, key=lambda x: int(x[-20:-16]))   # 按照照片编号后四位排序
 if not os.path.exists(plot_folder):
@@ -38,7 +42,8 @@ for i, filename in tqdm(enumerate(filename), total=total_files,colour='blue'):
         #data.append(filename)                       #把文件名追加到data中，来看输出的文件顺序
         file_path = os.path.join(output_folder, filename)
         extract_data(file_path, plot_folder)
-    output_path = os.path.join(plot_folder, 'plot_0328.dat')
+    plotname='plot_【'+str(x)+' '+str(y)+'】.dat'
+    output_path = os.path.join(plot_folder, plotname)
 with open(output_path, 'w') as f2:
     for line in data:
         f2.write("  ".join(map(str,line)) + "\n")
