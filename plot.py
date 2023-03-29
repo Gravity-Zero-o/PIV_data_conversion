@@ -4,6 +4,7 @@ from tqdm import tqdm
 ####################
 x=71.20           # 待测x坐标
 y=71.20           # 待测y坐标
+read_line = 4290  #设置倒数的行数，这里是倒数第4290行，值为xy之积
 output_folder = 'K:/out'     #这个路径是前面文件转换后的输出路径，也是提取数据的输入路径
 plot_folder = 'K:/plot'      #这是提取数据的输出路径
 #####################
@@ -11,7 +12,7 @@ plot_folder = 'K:/plot'      #这是提取数据的输出路径
 data = []
 def extract_data(file_path, output_folder):
     with open(file_path, 'r') as f:
-        lines = f.readlines()[-4290:]
+        lines = f.readlines()[-read_line:]
         arr = []
         for line in lines:
             arr.append(line.split())
