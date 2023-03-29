@@ -4,8 +4,8 @@ from tqdm import tqdm
 ####################
 x=71.20           # 待测x坐标
 y=71.20           # 待测y坐标
-output_folder = 'K:/tmp/test1/0323/U30F10_out'     #这个路径是前面文件转换后的输出路径，也是提取数据的输入路径
-plot_folder = 'K:/tmp/test1/0323/U30F10_plot'      #这是提取数据的输出路径
+output_folder = 'K:/out'     #这个路径是前面文件转换后的输出路径，也是提取数据的输入路径
+plot_folder = 'K:/plot'      #这是提取数据的输出路径
 #####################
 
 data = []
